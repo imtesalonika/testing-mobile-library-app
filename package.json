@@ -1,0 +1,15 @@
+{
+  "name": "library_application_android_testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Tesalonika Aprisda Sitopu",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "mocha": "^11.2.2",
+    "webdriverio": "^9.12.7"
+  }
+}
