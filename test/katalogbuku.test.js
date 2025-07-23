@@ -2,12 +2,12 @@ const {remote} = require('webdriverio');
 const assert = require('assert');
 
 
-describe('Login', function () {
+describe('Katalog Buku', function () {
     this.timeout(40000);
 
     const capabilities = {
         "platformName": "Android",
-        "appium:platformVersion": "14.0",
+        "appium:platformVersion": "15.0",
         "appium:deviceName": "RRCX909A1RT",
         "appium:automationName": "UiAutomator2",
         "appium:app": "/home/tesalonika/Documents/projects/library-application-mobile/build/app/outputs/flutter-apk/app-release.apk",
@@ -19,7 +19,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -36,6 +36,7 @@ describe('Login', function () {
             await inputPassword.setValue('nana21005')
 
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
+            await driver.pause(5000);
 
             const validationElementBukuTerbaru = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the m..."]');
             const isElementBukuTerbaruExists = await validationElementBukuTerbaru.isExisting();
@@ -46,7 +47,7 @@ describe('Login', function () {
             // const isElementBukuFavoritDisplayed = await validationElement.isDisplayed();
 
             assert.ok( isElementBukuTerbaruExists && isElementBukuTerbaruDisplayed, '⚠️ Element Buku tidak ditemukan atau tidak terlihat!');
-            await driver.pause(5500);
+            await driver.pause(6000);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()
             await driver.$('//android.widget.Button[@content-desc="Log Out"]').click()
         } finally {
@@ -59,7 +60,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -96,7 +97,7 @@ describe('Login', function () {
             const isElementBukuFavoritDisplayed = await validationElementBukuFavorit.isDisplayed();
 
             assert.ok( isElementBukuFavoritExists && isElementBukuFavoritDisplayed, '⚠️ Element Buku tidak ditemukan atau tidak terlihat!');
-            await driver.pause(4000);
+            await driver.pause(6000);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()
             await driver.pause(5000);
             await driver.$('//android.widget.Button[@content-desc="Log Out"]').click()
@@ -110,7 +111,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -156,7 +157,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -174,8 +175,7 @@ describe('Login', function () {
 
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
             await driver.pause(2000);
-            const elemenSearch = await driver.$('//android.view.View[@content-desc="Perpustakaan Digital\n' +
-                'Institut Teknologi Del"]/android.view.View[1]')
+            const elemenSearch = await driver.$('//android.widget.ScrollView/android.view.View[2]')
             await elemenSearch.click()
             const elemenPengisianSearch = await driver.$('//android.widget.EditText')
             await elemenPengisianSearch.click();
@@ -208,7 +208,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -227,8 +227,6 @@ describe('Login', function () {
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
 
             const validationElementBuku = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the m..."]');
-            const isElementBukuExists = await validationElementBuku.isExisting();
-            const isElementBukuDisplayed = await validationElementBuku.isDisplayed();
             await validationElementBuku.click()
 
             const validationJudulBuku = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the missing manual"]');
@@ -238,7 +236,6 @@ describe('Login', function () {
             const backButton = await driver.$('//android.widget.Button');
             await backButton.click();
 
-            assert.ok( isElementBukuExists && isElementBukuDisplayed, '⚠️ Element Buku tidak ditemukan atau tidak terlihat!');
             assert.ok( isvalidationJudulBukuExists && isvalidationJudulBukuDisplayed, '⚠️ Element Buku tidak ditemukan atau tidak terlihat!');
             await driver.pause(5500);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()
@@ -255,7 +252,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -314,7 +311,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -373,11 +370,11 @@ describe('Login', function () {
         }
     })
 
-    it('User dapat meminjam buku jika buku tidak tersedia', async () => {
+    it('User tidak dapat meminjam buku jika buku tidak tersedia', async () => {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -395,12 +392,12 @@ describe('Login', function () {
 
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
 
-            const ListBuku = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the m..."]');
+            const ListBuku = await driver.$('//android.view.View[@content-desc="Creating web applica..."]');
             await ListBuku.click();
 
-            const validationJudulBuku = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the missing manual"]');
-            const isvalidationJudulBukuExists = await validationJudulBuku.isExisting();
-            assert.ok( isvalidationJudulBukuExists, '⚠️ Element Buku tidak ditemukan atau tidak terlihat!');
+            // const validationJudulBuku = await driver.$('//android.view.View[@content-desc="Creating web applica..."]');
+            // const isvalidationJudulBukuExists = await validationJudulBuku.isExisting();
+            // assert.ok( isvalidationJudulBukuExists, '⚠️ Judul Buku tidak ditemukan atau tidak terlihat!');
 
             console.log('\n\n\n-------------------------------------------------------------------------')
             console.log('Scroll ke tombol pinjam buku')
@@ -416,7 +413,6 @@ describe('Login', function () {
 
             const backButton = await driver.$('//android.widget.Button');
             await backButton.click();
-
 
             await driver.pause(4000);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()

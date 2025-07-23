@@ -2,12 +2,12 @@ const {remote} = require('webdriverio');
 const assert = require('assert');
 
 
-describe('Login', function () {
+describe('Tugas Akhir', function () {
     this.timeout(100000);
 
     const capabilities = {
         "platformName": "Android",
-        "appium:platformVersion": "14.0",
+        "appium:platformVersion": "15.0",
         "appium:deviceName": "RRCX909A1RT",
         "appium:automationName": "UiAutomator2",
         "appium:app": "/home/tesalonika/Documents/projects/library-application-mobile/build/app/outputs/flutter-apk/app-release.apk",

@@ -2,12 +2,12 @@ const {remote} = require('webdriverio');
 const assert = require('assert');
 
 
-describe('Login', function () {
+describe('Profile', function () {
     this.timeout(40000);
 
     const capabilities = {
         "platformName": "Android",
-        "appium:platformVersion": "14.0",
+        "appium:platformVersion": "15.0",
         "appium:deviceName": "RRCX909A1RT",
         "appium:automationName": "UiAutomator2",
         "appium:app": "/home/tesalonika/Documents/projects/library-application-mobile/build/app/outputs/flutter-apk/app-release.apk",
@@ -19,7 +19,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -36,17 +36,17 @@ describe('Login', function () {
             await inputPassword.setValue('nana21005')
 
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
+            await driver.pause(8000);
 
-            await driver.pause(5500);
             const navigasiMenuProfil = await driver.$('//android.view.View[@content-desc="Profil"]');
             await navigasiMenuProfil.click()
 
-            const validationHalamanProfil = await driver.$('//android.view.View[@content-desc="Tesalonika Aprisda Sitopu"]');
+            const validationHalamanProfil = await driver.$('//android.view.View[@content-desc="ifs21005@students.del.ac.id"]');
             const isHalamanProfilExists = await validationHalamanProfil.isExisting();
             const isHalamanProfilDisplayed = await validationHalamanProfil.isDisplayed();
             assert.ok( isHalamanProfilExists && isHalamanProfilDisplayed, '⚠️ Halaman Profile tidak ditemukan atau tidak terlihat!');
 
-            await driver.pause(5500);
+            await driver.pause(4000);
             await driver.$('//android.widget.Button[@content-desc="Log Out"]').click()
         } finally {
             await driver.terminateApp('com.mycompany.libraryapplication');
@@ -58,7 +58,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -110,7 +110,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -161,7 +161,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -189,7 +189,7 @@ describe('Login', function () {
             const tabDiproses = await driver.$('//android.widget.Button[@content-desc="Diproses"]');
             await tabDiproses.click()
 
-            const listBukuDiproses = await driver.$('//android.view.View[@content-desc="Develop an accounting package using Visual Ba\n' +
+            const listBukuDiproses = await driver.$('//android.view.View[@content-desc="Administrasi database Oracle8i: Belajar sendi\n' +
                 'Tanggal Peminjaman: -\n' +
                 'Batas Kembali: -"]');
             const islistBukuDiprosesExists = await listBukuDiproses.isExisting();
@@ -200,9 +200,9 @@ describe('Login', function () {
             const tabDiterima = await driver.$('//android.widget.Button[@content-desc="Diterima"]');
             await tabDiterima.click()
 
-            const listBukuDiterima = await driver.$('//android.view.View[@content-desc="4 model tes TOEFL: Memuat 600 soal TOEFL leng\n' +
-                'Tanggal Peminjaman: 24 Mei 2025 11:11\n' +
-                'Batas Kembali: 31 Mei 2025 11:11"]');
+            const listBukuDiterima = await driver.$('//android.view.View[@content-desc="Develop an accounting package using Visual Ba\n' +
+                'Tanggal Peminjaman: 24 Mei 2025 16:39\n' +
+                'Batas Kembali: 14 Juni 2025 16:39"]');
             const islistBukuDiterimaExists = await listBukuDiterima.isExisting();
             const islistBukuDiterimaDisplayed = await listBukuDiterima.isDisplayed();
 
@@ -211,7 +211,7 @@ describe('Login', function () {
             const tabDitolak = await driver.$('//android.widget.Button[@content-desc="Ditolak"]');
             await tabDitolak.click()
 
-            const listBukuDitolak = await driver.$('//android.view.View[@content-desc="Kalkulus dan geometri analitis Jilid 2\n' +
+            const listBukuDitolak = await driver.$('//android.view.View[@content-desc=" Implementing a database design   using Micro\n' +
                 'Tanggal Peminjaman: -\n' +
                 'Batas Kembali: -"]');
             const islistBukuDitolakExists = await listBukuDitolak.isExisting();
@@ -236,7 +236,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -263,9 +263,9 @@ describe('Login', function () {
 
             const elemenPencarianDiproses = await driver.$('//android.widget.EditText')
             await elemenPencarianDiproses.click();
-            await elemenPencarianDiproses.setValue('develop')
+            await elemenPencarianDiproses.setValue('administrasi')
 
-            const bukudiproses = await driver.$('//android.view.View[@content-desc="Develop an accounting package using Visual Ba\n' +
+            const bukudiproses = await driver.$('//android.view.View[@content-desc="Administrasi database Oracle8i: Belajar sendi\n' +
                 'Tanggal Peminjaman: -\n' +
                 'Batas Kembali: -"]');
             const isbukudiprosesExists = await bukudiproses.isExisting();
@@ -290,7 +290,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -321,11 +321,11 @@ describe('Login', function () {
 
             const elemenPencarianDiterima = await driver.$('//android.widget.EditText')
             await elemenPencarianDiterima.click();
-            await elemenPencarianDiterima.setValue('appleworks')
+            await elemenPencarianDiterima.setValue('evaluasi')
 
-            const bukuditerima = await driver.$('//android.view.View[@content-desc="Appleworks 6 : the missing manual\n' +
-                'Tanggal Peminjaman: 17 Mei 2025 15:44\n' +
-                'Batas Kembali: 24 Mei 2025 15:44"]');
+            const bukuditerima = await driver.$('//android.view.View[@content-desc="Evaluasi dalam proses belajar mengajar\n' +
+                'Tanggal Peminjaman: 24 Mei 2025 11:12\n' +
+                'Batas Kembali: 31 Mei 2025 11:12"]');
             const isbukuditerimaExists = await bukuditerima.isExisting();
             const isbukuditerimaDisplayed = await bukuditerima.isDisplayed();
 
@@ -348,7 +348,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -379,9 +379,9 @@ describe('Login', function () {
 
             const elemenPencarianDitolak = await driver.$('//android.widget.EditText')
             await elemenPencarianDitolak.click();
-            await elemenPencarianDitolak.setValue('kalkulus')
+            await elemenPencarianDitolak.setValue('implementing')
 
-            const bukuditolak = await driver.$('//android.view.View[@content-desc="Kalkulus dan geometri analitis Jilid 2\n' +
+            const bukuditolak = await driver.$('//android.view.View[@content-desc=" Implementing a database design   using Micro\n' +
                 'Tanggal Peminjaman: -\n' +
                 'Batas Kembali: -"]');
             const isbukuditolakExists = await bukuditolak.isExisting();
@@ -406,7 +406,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -460,7 +460,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -515,7 +515,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -572,7 +572,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -610,9 +610,11 @@ describe('Login', function () {
             const ispesanBerhasilDisplayed = await pesanBerhasil.isDisplayed();
             assert.ok( ispesanBerhasilExists && ispesanBerhasilDisplayed, '⚠️  Pesan Berhasil tidak ditemukan')
 
-            const buttonOK = await driver.$('//android.widget.Button[@content-desc="OK"]');
-            await buttonOK.click()
+            // const buttonOK = await driver.$('//android.widget.Button[@content-desc="OK"]');
+            // await buttonOK.click()
 
+            await driver.back();
+            await driver.back();
             await driver.back();
 
             await driver.pause(5500);

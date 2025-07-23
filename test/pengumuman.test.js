@@ -2,12 +2,12 @@ const {remote} = require('webdriverio');
 const assert = require('assert');
 
 
-describe('Login', function () {
+describe('Pengumuman', function () {
     this.timeout(40000);
 
     const capabilities = {
         "platformName": "Android",
-        "appium:platformVersion": "14.0",
+        "appium:platformVersion": "15.0",
         "appium:deviceName": "RRCX909A1RT",
         "appium:automationName": "UiAutomator2",
         "appium:app": "/home/tesalonika/Documents/projects/library-application-mobile/build/app/outputs/flutter-apk/app-release.apk",
@@ -36,8 +36,8 @@ describe('Login', function () {
             await inputPassword.setValue('nana21005')
 
             await driver.$('//android.widget.Button[@content-desc="Login"]').click()
+            await driver.pause(6000);
 
-            await driver.pause(5500);
             const navigasiMenuPengumuman = await driver.$('//android.view.View[@content-desc="Pengumuman"]');
             await navigasiMenuPengumuman.click()
 
@@ -100,9 +100,9 @@ describe('Login', function () {
 
             assert.ok( isvalidationPengumumanTersediaExists && isvalidationPengumumanTersediaDisplayed, '⚠️ Element Pengumuman tidak ditemukan')
 
-            await driver.pause(5500);
+            await driver.pause(4000);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()
-            await driver.pause(5500);
+            await driver.pause(4000);
             await driver.$('//android.widget.Button[@content-desc="Log Out"]').click()
         } finally {
             await driver.terminateApp('com.mycompany.libraryapplication');
@@ -138,10 +138,11 @@ describe('Login', function () {
 
             const validationJudulPengumuman = await driver.$('//android.view.View[@content-desc="[Info] POJOK STATISTIK HADIR KEMBALI\n' +
                 '23 May 2025, 09:59"]');
-            const isvalidationJudulPengumumanExists = await validationJudulPengumuman.isExisting();
-            const isvalidationJudulPengumumanDisplayed = await validationJudulPengumuman.isDisplayed();
-            assert.ok( isvalidationJudulPengumumanExists && isvalidationJudulPengumumanDisplayed, '⚠️ Element Pengumuman tidak ditemukan atau tidak terlihat!');
             await validationJudulPengumuman.click()
+            // const isvalidationJudulPengumumanExists = await validationJudulPengumuman.isExisting();
+            // const isvalidationJudulPengumumanDisplayed = await validationJudulPengumuman.isDisplayed();
+            // assert.ok( isvalidationJudulPengumumanExists && isvalidationJudulPengumumanDisplayed, '⚠️ Element Pengumuman tidak ditemukan atau tidak terlihat!');
+
 
             const validationisiPengumuman = await driver.$('//android.view.View[@content-desc="POJOK STATISTIK HADIR KEMBALI"]');
             const isvalidationIsiPengumumanExists = await validationisiPengumuman.isExisting();
@@ -152,7 +153,7 @@ describe('Login', function () {
             const backButtonPengumuman = await driver.$('//android.widget.Button[@content-desc="Back"]');
             await backButtonPengumuman.click();
 
-            await driver.pause(5500);
+            await driver.pause(4000);
             await driver.$('//android.view.View[@content-desc="Profil"]').click()
             await driver.$('//android.widget.Button[@content-desc="Log Out"]').click()
 

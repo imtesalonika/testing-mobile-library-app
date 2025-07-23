@@ -6,7 +6,7 @@ describe('Login', function () {
 
     const capabilities = {
         "platformName": "Android",
-        "appium:platformVersion": "14.0",
+        "appium:platformVersion": "15.0",
         "appium:deviceName": "RRCX909A1RT",
         "appium:automationName": "UiAutomator2",
         "appium:app": "/home/tesalonika/Documents/projects/library-application-mobile/build/app/outputs/flutter-apk/app-release.apk",
@@ -18,7 +18,7 @@ describe('Login', function () {
        let driver = await remote({
            hostname: process.env.APPIUM_HOST || 'localhost',
            port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-           logLevel: 'info',
+           logLevel: 'debug',
            capabilities,
        });
 
@@ -54,7 +54,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'debug',
             capabilities,
         });
 
@@ -87,7 +87,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -120,7 +120,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
@@ -153,7 +153,7 @@ describe('Login', function () {
         let driver = await remote({
             hostname: process.env.APPIUM_HOST || 'localhost',
             port: parseInt(process.env.APPIUM_PORT, 10) || 4723,
-            logLevel: 'info',
+            logLevel: 'error',
             capabilities,
         });
 
